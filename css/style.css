@@ -1,0 +1,209 @@
+:root{
+  --cream:#f2ead9;
+  --navy:#1d3557;
+  --navy-deep:#132538;
+  --steel:#4a6fa5;
+  --silver:#c9cdd3;
+  --gold:#cbb26a;
+}
+
+*{box-sizing:border-box;}
+
+html,body{
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+  overflow:hidden;
+  font-family:'Cormorant Garamond', serif;
+  background:var(--navy-deep);
+}
+
+.stage{
+  position:relative;
+  width:100%;
+  height:100vh;
+  height:100dvh;
+  overflow:hidden;
+}
+
+.panel{
+  position:absolute;
+  inset:0;
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+/* ---------- COVER ---------- */
+#cover{
+  /* Background photo for the "Open Me" cover page. Swap the data URI below to change it. */
+  background-image:url('../images/cover.jpeg');
+  z-index:2;
+  transition:transform 1.1s cubic-bezier(.65,0,.35,1), opacity 1.1s ease;
+}
+
+#cover.opened{
+  transform:translateY(-100%);
+  opacity:0.4;
+  pointer-events:none;
+}
+
+.cover-inner{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:22px;
+  padding:40px;
+}
+
+.cover-eyebrow{
+  color:var(--navy);
+  font-size:15px;
+  letter-spacing:.12em;
+  font-style:italic;
+  opacity:.75;
+}
+
+.cover-title{
+  font-family:'Parisienne', cursive;
+  color:var(--navy);
+  font-size:clamp(48px,10vw,80px);
+  line-height:1;
+  margin:0;
+  text-shadow:0 1px 0 rgba(255,255,255,.35);
+}
+
+.cover-sub{
+  color:var(--navy-deep);
+  font-size:18px;
+  max-width:280px;
+  opacity:.8;
+}
+
+.open-btn{
+  margin-top:10px;
+  border:1.5px solid var(--navy);
+  background:rgba(242,234,217,.55);
+  color:var(--navy);
+  font-family:'Cormorant Garamond', serif;
+  font-size:19px;
+  letter-spacing:.06em;
+  padding:14px 42px;
+  border-radius:999px;
+  cursor:pointer;
+  backdrop-filter:blur(2px);
+  transition:transform .35s ease, background .35s ease, box-shadow .35s ease;
+  animation:pulse 2.6s ease-in-out infinite;
+}
+
+.open-btn:hover{
+  background:var(--navy);
+  color:var(--cream);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(19,37,56,.35);
+}
+
+@keyframes pulse{
+  0%,100%{ box-shadow:0 0 0 0 rgba(29,53,87,.25); }
+  50%{ box-shadow:0 0 0 10px rgba(29,53,87,0); }
+}
+
+/* ---------- INVITE ---------- */
+#invite{
+  overflow-y:auto;
+  align-items:flex-start;
+  padding:48px 0;
+  /* CHANGE HERE: swap the data URI below to change the invite page's background photo */
+  background-image:url('../images/invite.jpeg');
+  z-index:1;
+}
+
+.card{
+  max-width:420px;
+  width:88%;
+  padding:46px 34px;
+  background:rgba(242,234,217,.72);
+  border:1px solid rgba(29,53,87,.35);
+  box-shadow:0 20px 60px rgba(19,37,56,.25);
+  opacity:0;
+  transform:translateY(18px) scale(.98);
+  transition:opacity 1s ease .5s, transform 1s ease .5s;
+}
+
+#invite.show .card{
+  opacity:1;
+  transform:translateY(0) scale(1);
+}
+
+.rule{
+  width:56px;
+  height:1px;
+  background:var(--gold);
+  margin:0 auto 18px;
+}
+
+.invite-eyebrow{
+  color:var(--navy);
+  font-size:14px;
+  letter-spacing:.18em;
+  text-transform:lowercase;
+  font-style:italic;
+  opacity:.7;
+  margin-bottom:6px;
+}
+
+.invite-title{
+  font-family:'Parisienne', cursive;
+  color:var(--navy);
+  font-size:clamp(40px,8vw,58px);
+  line-height:1;
+  margin:0 0 18px;
+}
+
+.invite-msg{
+  color:var(--navy-deep);
+  font-size:19px;
+  line-height:1.5;
+  margin:0 0 20px;
+  font-style:italic;
+}
+
+.invite-body{
+  color:var(--navy-deep);
+  font-size:17px;
+  line-height:1.55;
+  text-align:left;
+  margin:0 0 18px;
+}
+
+.details{
+  color:var(--navy);
+  font-size:19px;
+  line-height:1.65;
+  margin:0 0 24px;
+}
+
+.details strong{
+  display:block;
+  font-weight:600;
+  letter-spacing:.02em;
+}
+
+.rsvp{
+  color:var(--navy-deep);
+  font-size:17px;
+  letter-spacing:.02em;
+}
+
+.rsvp b{
+  color:var(--navy);
+  font-weight:600;
+}
+
+@media (max-width:380px){
+  .card{ padding:36px 22px; }
+}
